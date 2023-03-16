@@ -93,5 +93,54 @@
 			padding-left: 10px;
 			padding-right: 10px;
 		}
-
-		
+		#operateContainerBlock{
+			/*在operateContainer中防止窗口变窄其他div被挤下去的div样式*/
+			min-width: 960px;
+			height: 40px;
+			border: #00008B solid 1px;
+		}
+		#fileTitleInfofont{
+			/*在operateContainer中显示的文件名样式*/
+			display: inline-block;
+			position: relative;
+			float: left;
+			margin-top: 12px;
+			margin-left: 5px;
+			font-size: 4px;
+		}
+		#fileTimeinfoFont{
+			/*显示的文件上次标注时间样式*/
+			display: inline-block;
+			position: relative;
+			float: right;
+			margin-top: 14px;
+			margin-left: 16px;
+			font-size: 4px;
+		}
+		.fileListitem{
+			/*主操作区文件列表的文件*/
+			border: #00008B solid 1px;
+			min-width: 95%;
+			height: 45px;
+			position: relative;
+			float: left;
+			margin-top: 12px;
+			margin-left: 16px;
+			font-size: 4px;
+		}
+		.fileListitem:hover{
+			/*文件列表中鼠标移动到文件上颜色改变样式*/
+			background-color: #6495ED;
+		}
+		.fileListitem:active{
+			/*文件列表中鼠标点击文件颜色改变样式*/
+			background-color: #4169E1;
+		}
+		#fileListitemButtongroup{
+			/*单个文件对象的按钮组样式*/
+			position: relative;
+			float: right;
+			margin-top: 10px;
+			margin-right: 10px;
+			margin-left: 10px;
+		}

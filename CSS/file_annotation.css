@@ -69,8 +69,8 @@
 			position: relative;
 			margin: 10px;
 		}
-		.mainContainer {
-			/*页面调转菜单栏右侧的主要操作区样式*/
+		.svgMaincontainer {
+			/*svg外部div样式,作用是加滚动条*/
 			width: calc(100% - 295px);
 			padding: 20px;
 			height: calc(100vh - 216px);
@@ -80,9 +80,10 @@
 			margin-top: 20px;
 			margin-left: 25px;
 			padding: 10px;
+			overflow: scroll;
 		}
-		.operateContainer{
-			/*主要操作区上方板块样式*/
+		.fileInfocontainer{
+			/*svg上方显示文件信息板块*/
 			width: calc(100% - 295px);
 			height:45px;
 			border: #ff0000 solid 1px;
