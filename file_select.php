@@ -123,24 +123,24 @@
 					<div style="position: relative; float: left;width: 50px;height: 43px;border: #00ff00 solid 1px;"><!-- 装入文件图片 -->
 						<img src="txt_icon.jpeg" height="30px" width="30px" style="margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;">
 					</div>
-					文件：龙的秘密
+					<form action="" method="post">
+						<input id="file_rearch" type="text" style="position: relative;float: left;" />
+						<input id="file_rearch" type="button" style="position: relative;float: left;margin-left: 10px;margin-right: 30px;" value="搜索" />
+					</form>
+					分类<select>
+						<option>all</option>
+						<option>class1</option>
+						<option>class2</option>
+						<option>class3</option>
+					</select>
 				</div>
 					<div class="box"><!-- 作用是加上个滚动条 -->
-					<svg style=" background-color:lavender;width: 100%;height: 1200px;" xmlns="http://www.w3.org/2000/svg"><!-- svg框，需要改变 height 属性增加滚动条的量 -->
-						<rect width="51" height="17" x="72" y="153" fill="red" rx="5" ry="5" />
-						<text style="white-space: pre; overflow-wrap: normal;" x="0" y="15" fill="black"><!-- svg框，需要改变 height 属性增加滚动条的量 -->
-							<tspan x="10" dy="51">黑子研究与分析</tspan>
-							<tspan x="10" dy="51">作者 孫吴氚</tspan>
-							<tspan x="10" dy="51">龙哥是个小黑子，到底应该如何实现。 龙哥是个小黑子因何而发生?带着这些问题，我们来审视一下龙哥这个小黑子。 达尔文在不经意间这样说过，敢于浪费哪怕一个钟头时间的人，说明他还不懂得珍惜生命的全部价值。</tspan>
-							<tspan x="10" dy="51">这启发了我， 而这些并不是完全重要，更加重要的问题是， 洛克曾经说过，学到很多东西的诀窍，就是一下子不要学很多。这句话语虽然很短，但令我浮想联翩。 白哲特在不经意间这样说过，坚强的信念能赢得强者的心，并使他们变得更坚强。</tspan>
-							<tspan x="10" dy="51">我们还要更加慎重的审视这个问题： 生活中，若龙哥是个小黑子出现了，我们就不得不考虑它出现了的事实。 一般来讲，我们都必须务必慎重的考虑考虑。 既然如何， 我们不得不面对一个非常尴尬的事实</tspan>
-							<tspan x="10" dy="51">那就是， 龙哥是个小黑子，发生了会如何，不发生又会如何？就我个人来说，龙哥是个小黑子对我的意义，不能不说非常重大。 黑格尔在不经意间这样说过，只有永远躺在泥坑里的人，才不会再掉进坑里。</tspan>
-						</text>
-					</svg>
+					
 					</div>
 			</div>
 		</div>
 	</body>
 	<script>
+		
 	</script>
 </html>
