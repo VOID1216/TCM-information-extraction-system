@@ -9,24 +9,22 @@
 	<body>
 		<div>
 			<div id="header" class="header"><!-- 网页最上方TOP-->
-				<div id="Top_left_logo" class="headerLogo"><!-- 网页最上方TOP左侧LOGO位置 -->
-					<img src="image/LOGO.png" width="120px" height="50px" style="margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;"/><!--LOGO图片-->
-				</div>
-				<div class="headerTitlepic"><!-- 网页最上方TOP左侧LOGO位置 -->
-					<img src="image/webtitle.png" width="380px" height="50px" style="margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;"/><!--LOGO图片-->
-				</div>
-				<div id="headerUser" class="headerUser">
-					<img src="image/icon/user.png" height="45px" width="45px"/>李应龙
-				</div><!-- 网页最上方TOP右侧用户位置 -->
+                <div class="headerTitlepic"><!-- 网页最上方TOP左侧LOGO位置 -->
+                    <img src="image/webtitle.png" width="380px" height="50px" style="margin: auto;position: relative;top: 0;left: 20px;bottom: 0;right: 0;"/><!--LOGO图片-->
+                </div>
+                <div id="headerUser" class="headerUser">
+                    <img src="image/icon/user.png" height="45px" width="45px"/>
+                    <div style="text-align: center;margin-top: 0px ; position: absolute; top:10px;left:50px;" >李应龙</div>
+                </div><!-- 网页最上方TOP右侧用户位置 -->
 			</div>
 			<div id="leftMenu" class="leftMenu"><!-- 网页左侧Left跳转功能栏 -->
 				<ul class="leftMenulist">
-					<li><font color="white" style="margin-left: 42px;">用户管理</font></li>
-					<li><font color="white" style="margin-left: 42px;">实体标签</font></li>
-					<li><font color="white" style="margin-left: 42px;">因果标签</font></li>
-					<li><font color="white" style="margin-left: 42px;">文章列表</font></li><!-- 按钮内容 -->
-					<li><font color="white" style="margin-left: 42px;">日志</font></li>
-					<li><font color="white" style="margin-left: 42px;">数据备份站</font></li>
+                    <li onclick="pageJump('file_list')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</span></li><!-- 按钮内容 -->
+                    <li onclick="pageJump('')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">实体标签</span></li>
+                    <li onclick="pageJump('')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">因果标签</span></li>
+                    <li onclick="pageJump('user_admin')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span></li>
+                    <li onclick="pageJump('')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">日志</span></li>
+                    <li onclick="pageJump('')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">数据备份站</span></li>
 				</ul>
 			</div>	
 			<div style="">

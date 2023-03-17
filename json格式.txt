@@ -1,0 +1,38 @@
+{
+	"data": [{
+		"id":"0",
+		"sentenceIndex":"0",
+		"startIndex":"0",
+		"endIndex":"0",
+		"categories":[],
+		"tags": [],
+		"words": [],
+        "annotation":[{
+			"content":"", //文章全文
+            "labelCategories":[{ //实体标签颜色、id和内容
+				"borderColor":"",
+				"color":"",
+				"id":"",
+				"text":""
+			}],
+			"labels":[{  //实体标签的具体位置
+				"starindex":0,  //起
+				"endindex":1,  //终
+				"id":0,
+				"caregoryId":"" //属于什么实体标签
+			}],
+			"connectionCategories":[{
+				"id":"",
+				"text":""
+			}],
+			"connections":[{
+				"fromId":0,
+				"toId":1,
+				"id":0,
+				"categoryId":""
+			}]
+		}],
+		"markUserId":""
+	}],
+	"totalCount":1
+}
