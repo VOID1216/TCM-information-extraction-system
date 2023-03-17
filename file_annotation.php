@@ -51,5 +51,12 @@
 		</div>
 	</body>
 	<script>
+        function pageJump(src){
+            if (src == ""){
+                alert("页面正在开发，敬请期待！");
+            }else {
+                location.href=src+".php";
+            }
+        }
 	</script>
 </html>

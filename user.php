@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>信息抽取平台(用户)</title>
 	</head>
-	<link rel="stylesheet" type="text/css" href="CSS/admin.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/user_admin.css" />
 	<script src="JS/Jquery.js"></script>
 	<body>
 		<div>

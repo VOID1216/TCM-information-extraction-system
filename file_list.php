@@ -56,7 +56,7 @@
 								</div>
 								<span style="margin-top: 14px;position: relative;float: left;font-size: 12px">大医金阙论.txt</span>
 								<div id="fileListitemButtongroup">
-									<input type="button" id="fileListitemEdit" value="编辑" />
+									<input type="button" id="fileListitemEdit" value="编辑" onclick="pageJump('file_annotation')"/>
 									<input type="button" id="fileListitemDel" value="删除" />
 								</div>
 								<span id="fileTimeinfoFont">上次标注时间15:22 2023-03-12</span>
@@ -67,7 +67,7 @@
 								</div>
 								<span style="margin-top: 14px;position: relative;float: left;font-size: 12px">本草纲目(缩短宽度div会挤下去【未解决】).txt</span>
 								<div id="fileListitemButtongroup">
-									<input type="button" id="fileListitemEdit" value="编辑" onclick="fileEdit()"/>
+									<input type="button" id="fileListitemEdit" value="编辑" onclick="pageJump('file_annotation')"/>
 									<input type="button" id="fileListitemDel" value="删除"/>
 								</div>
 								<font id="fileTimeinfoFont">上次标注时间16:10 2023-03-12</font>
