@@ -6,10 +6,11 @@
 			position: relative;
 			top: 0px;
 			min-width: 100%;
+			border-radius: 10px;
 		}
 		.leftMenu{
 			/*左侧页面跳转菜单*/
-			width: 200px;
+			width: 150px;
 			border-radius: 10px;
 			height: calc(100vh - 116px);
 			position: relative;
@@ -71,20 +72,20 @@
 		}
 		.svgMaincontainer {
 			/*svg外部div样式,作用是加滚动条*/
-			width: calc(100% - 295px);
+			width: calc(100% - 245px);
 			padding: 20px;
-			height: calc(100vh - 216px);
+			height: calc(100vh - 326px);
 			float: left;
 			position: relative;
 			border: solid 1px #ff0000;
-			margin-top: 20px;
+			margin-top: 10px;
 			margin-left: 25px;
 			padding: 10px;
 			overflow: scroll;
 		}
 		.fileInfocontainer{
 			/*svg上方显示文件信息板块*/
-			width: calc(100% - 295px);
+			width: calc(100% - 245px);
 			height:45px;
 			border: #ff0000 solid 1px;
 			position: relative;
@@ -93,6 +94,54 @@
 			margin-top:16px ;
 			padding-left: 10px;
 			padding-right: 10px;
+		}
+
+		.labelInfocontainer{
+			/*svg上方显示标签信息板块，设置滚动条*/
+			width: calc(100% - 245px);
+			height:100px;
+			overflow: scroll;
+			border: #ff0000 solid 1px;
+			position: relative;
+			float: left;
+			margin-left: 25px;
+			margin-top:5px ;
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-top: 10px;
+			padding-bottom: 5px;
+		}
+		.label_box{
+			/* 装label盒子的属性 */
+			padding-top: 10px;
+			padding-bottom: 10px;
+			/*设置盒子里面控件不会应为换行而断开的参数*/
+			display: flex;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+		}
+		.label_nav{
+			/*每一个标签的属性*/
+			width: auto;
+			height: auto;
+			border-radius: 5px;
+			background-color: #A7A7A7;
+			color: cadetblue;
+			margin-top: 5px;
+			margin-left: 5px;
+			padding: 3px;
+		}
+		.addLabel_button{
+			/*添加标签的button的属性*/
+			width: auto;
+			height: auto;
+			border-radius: 5px;
+			background-color: #34a780;
+			color: #fffcff;
+			margin-top: 5px;
+			margin-left: 5px;
+			padding: 3px;
+			border-style: none;
 		}
 
 		

@@ -93,7 +93,7 @@
 }
 #operateContainerallBlock{
 	/*在operateContainer中防止窗口变窄其他div被挤下去的div样式*/
-	min-width: 1280px;
+	min-width: 1300px;
 	height:43px;
 	border: #ff13cc solid 1px;
 }
