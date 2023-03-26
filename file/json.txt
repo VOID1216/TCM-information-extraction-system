@@ -8,18 +8,18 @@
 		"tags": [],
 		"words": [],
         "annotation":[{
-			"content":"", //文章全文
-            "labelCategories":[{ //实体标签颜色、id和内容
+			"content":"",
+            "labelCategories":[{
 				"borderColor":"",
 				"color":"",
 				"id":"",
 				"text":""
 			}],
-			"labels":[{  //实体标签的具体位置
-				"starindex":0,  //起
-				"endindex":1,  //终
+			"labels":[{
+				"starindex":0,
+				"endindex":0,
 				"id":0,
-				"caregoryId":"" //属于什么实体标签
+				"caregoryId":""
 			}],
 			"connectionCategories":[{
 				"id":"",
@@ -27,12 +27,12 @@
 			}],
 			"connections":[{
 				"fromId":0,
-				"toId":1,
+				"toId":0,
 				"id":0,
 				"categoryId":""
 			}]
 		}],
 		"markUserId":""
 	}],
-	"totalCount":1
+	"totalCount":0
 }

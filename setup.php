@@ -18,11 +18,10 @@ $queryString="create database if not exists smart_annotation";
 mysqli_query($link,$queryString);
 $queryString="use smart_annotation";
 mysqli_query($link,$queryString);//建数据库以及使用
-mysqli_query($link,"drop table user");
 $queryString="create table user(ID VARCHAR(50) PRIMARY KEY,username char(50),password char(50),level enum('0','1','2','3'))ENGINE=MyISAM DEFAULT CHARSET=utf8";
 mysqli_query($link,$queryString);
 
-$queryString="create table assignment(id VARCHAR(50) PRIMARY KEY,type VARCHAR(50),set_time DATE,text MediumText)ENGINE=MyISAM DEFAULT CHARSET=utf8";
+$queryString="create table assignment(id VARCHAR(50) PRIMARY KEY,name VARCHAR(50),set_time DATE,text MediumText)ENGINE=MyISAM DEFAULT CHARSET=utf8";
 mysqli_query($link,$queryString);
 
 
@@ -34,4 +33,3 @@ mysqli_query($link,$queryString);
 
 //$queryString="update user set password = XX where id = XX AND password=YY";  //用户修改密码语句
 //mysqli_query($link,$queryString);
-
