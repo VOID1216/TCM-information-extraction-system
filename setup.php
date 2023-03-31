@@ -21,7 +21,7 @@ mysqli_query($link,$queryString);//建数据库以及使用
 $queryString="create table user(ID VARCHAR(50) PRIMARY KEY,username char(50),password char(50),level enum('0','1','2','3'))ENGINE=MyISAM DEFAULT CHARSET=utf8";
 mysqli_query($link,$queryString);
 
-$queryString="create table assignment(id VARCHAR(50) PRIMARY KEY,name VARCHAR(50),set_time DATE,text MediumText)ENGINE=MyISAM DEFAULT CHARSET=utf8";
+$queryString="create table assignment(id INT PRIMARY KEY,name VARCHAR(50),set_time DATE,text MediumText)ENGINE=MyISAM DEFAULT CHARSET=utf8";
 mysqli_query($link,$queryString);
 
 

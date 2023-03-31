@@ -76,6 +76,7 @@
 			margin-top: 20px;
 			margin-left: 25px;
 			padding: 10px;
+			overflow: scroll;
 		}
 		.operateContainer{
 			/*主要操作区上方板块样式*/

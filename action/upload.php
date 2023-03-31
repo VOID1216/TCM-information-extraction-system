@@ -14,7 +14,7 @@ if(isset($_POST["btnUpload"])) {
         $queryString="select max(id) as maxId FROM assignment";
         $rs=mysqli_query($link,$queryString);
         $row=mysqli_fetch_assoc($rs);
-        if ($row['maxId']=="NULL"){
+        if ($row['maxId']==NULL){
             $countId=1;
         }else{
             $countId=$row['maxId']+1;
@@ -23,7 +23,7 @@ if(isset($_POST["btnUpload"])) {
 //        var_dump($json);
         $s=json_encode($json,JSON_UNESCAPED_UNICODE);
         $date=getdate()['year'].'-'.getdate()['mon'].'-'.getdate()['mday'];
-        $queryString="insert into assignment(id,name,set_time,text)VALUES ('$countId','$fileName','$date','$s')";
+        $queryString="insert into assignment(id,name,set_time,text)VALUES('$countId','$fileName','$date','$s')";
         mysqli_query($link,$queryString);
         echo mysqli_error($link);
     }

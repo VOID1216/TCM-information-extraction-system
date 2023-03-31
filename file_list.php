@@ -6,11 +6,17 @@ $rs = mysqli_query($link, $queryString);
 echo mysqli_error($link);
 $i = 0;
 $row = false;
+$rows = [];
+$name = [];
+$id = [];
+$time = [];
+//$isDelete = [];
 while (($row = mysqli_fetch_assoc($rs)) != false) {
     $rows[$i] = $row;
     $name[$i] = $row['name'];
     $id[$i] = $row['id'];
     $time[$i] = $row['set_time'];
+//    $isDelete[$i] = $row['isDelete'];
     $i++;
 }
 $arrayLength = count($rows);
@@ -77,7 +83,7 @@ $i = 0;
                 </div>
             </div>
         </div>
-        <div class="mainContainer"><!-- 页面调转菜单栏右侧的主要操作区样式 -->
+        <div style="overflow-y: scroll" class="mainContainer"><!-- 页面调转菜单栏右侧的主要操作区样式 -->
             <div id="fileListitemGroup">
                 <!--                根据数据库内数据DOM动态加载-->
             </div>
@@ -88,50 +94,52 @@ $i = 0;
 </body>
 <script type="text/javascript">
     const jsonStrName = '<?php echo json_encode($name, JSON_UNESCAPED_UNICODE);?>';
-    jsonName = JSON.parse(jsonStrName);
+    jsonName = JSON.parse(jsonStrName);//数组--存储文章姓名
     const jsonStrTime = '<?php echo json_encode($time, JSON_UNESCAPED_UNICODE);?>';
-    jsonTime = JSON.parse(jsonStrTime);
+    jsonTime = JSON.parse(jsonStrTime);//数组--存储上传时间
     const jsonStrId = '<?php echo json_encode($id, JSON_UNESCAPED_UNICODE);?>';
-    jsonId = JSON.parse(jsonStrId);
+    jsonId = JSON.parse(jsonStrId);//数组--存储文章ID
+    //const jsonStrIsDelete = '<?php //echo json_encode($isDelete, JSON_UNESCAPED_UNICODE);?>//';
+    //jsonIsDelete = JSON.parse(jsonStrIsDelete);//数组--存储文章删除状态
     const fileListitemGroup = $("#fileListitemGroup");
     for (let i = 0; i < <?php echo $arrayLength;?>; ++i) {
         let objDiv1 = $("<div>", {
-            class: "fileListitem"
-        });
+                class: "fileListitem"
+            });
         objDiv1.appendTo(fileListitemGroup);
         let objDiv2 = $("<div>", {
-            css: {
-                position: "relative",
-                float: "left",
-                width: "50px",
-                height: "40px",
-                border: "1px solid #00ff00"
-            }
-        });
+                css: {
+                    position: "relative",
+                    float: "left",
+                    width: "50px",
+                    height: "40px",
+                    border: "1px solid #00ff00"
+                }
+            });
         objDiv2.appendTo(objDiv1);
         let objImg = $("<img>", {
-            alt: "",
-            src: "image/icon/txt_icon.png",
-            height: "30px",
-            width: "30px",
-            css: {
-                margin: "auto",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0
-            }
-        });
+                alt: "",
+                src: "image/icon/txt_icon.png",
+                height: "30px",
+                width: "30px",
+                css: {
+                    margin: "auto",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0
+                }
+            });
         objImg.appendTo(objDiv2);
         let objSpan = $("<span>", {
-            css: {
-                position: "relative",
-                float: "left",
-                fontsize: "12px",
-                marginTop: "14px"
-            }
-        });
+                css: {
+                    position: "relative",
+                    float: "left",
+                    fontsize: "12px",
+                    marginTop: "14px"
+                }
+            });
         objSpan.html(jsonName[i]);
         objSpan.appendTo(objDiv1);
         let objDiv3 = $("<div>", {
@@ -153,11 +161,37 @@ $i = 0;
             type: "button",
             value: "删除"
         });
+        objInputDel.bind(
+            'click',
+            () => {
+                //生成dialog，对操作进行确认
+                let objDialog = $('<dialog>');
+                let objSpan = $('<span>是否确认删除文章？</span>');
+                let btnYes = $('<button>确认</button>');
+                let btnNo = $('<button>取消</button>');
+                objDialog.appendTo(document.body);
+                objSpan.appendTo(objDialog);
+                btnYes.appendTo(objDialog);
+                btnNo.appendTo(objDialog);
+                btnYes.bind('click', () => {
+                    $.ajax({
+                        url: '/action/deleteArticle.php?id='+jsonId[i],
+                    });
+                    objDialog.remove();
+                    location.replace(location.href);
+                });
+                btnNo.bind('click', () => {
+                    objDialog.remove();
+                });
+                objDialog.show();
+            }
+        )
         objInputDel.appendTo(objDiv3);
     }
 
     function upload() {
         $("#formUpload").submit();
+        location.replace(location.href);
     }
 </script>
 </html>
