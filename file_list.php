@@ -4,18 +4,17 @@ $link = mysqli_connect("localhost", "root", "", "smart_annotation");
 $queryString = "select id,name,set_time from assignment;";
 $rs = mysqli_query($link, $queryString);
 echo mysqli_error($link);
-$i=0;
-$row=false;
-$rows=0;
-while (($row = mysqli_fetch_assoc($rs))!=false){
-    $rows[$i]=$row;
-    $name[$i]=$row['name'];
-    $id[$i]=$row['id'];
-    $time[$i]=$row['set_time'];
+$i = 0;
+$row = false;
+while (($row = mysqli_fetch_assoc($rs)) != false) {
+    $rows[$i] = $row;
+    $name[$i] = $row['name'];
+    $id[$i] = $row['id'];
+    $time[$i] = $row['set_time'];
     $i++;
 }
 $arrayLength = count($rows);
-$i=0;
+$i = 0;
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -42,12 +41,6 @@ $i=0;
             <li onclick="pageJump('file_list')"><span
                         style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</span>
             </li><!-- 按钮内容 -->
-            <li onclick="pageJump('')"><span
-                        style="display: block; text-align: center; line-height: 50px; color: white; ">实体标签</span>
-            </li>
-            <li onclick="pageJump('')"><span
-                        style="display: block; text-align: center; line-height: 50px; color: white; ">因果标签</span>
-            </li>
             <li onclick="pageJump('user_admin')"><span
                         style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span>
             </li>
@@ -86,28 +79,28 @@ $i=0;
         </div>
         <div class="mainContainer"><!-- 页面调转菜单栏右侧的主要操作区样式 -->
             <div id="fileListitemGroup">
-<!--                根据数据库内数据DOM动态加载-->
+                <!--                根据数据库内数据DOM动态加载-->
             </div>
         </div>
     </div>
 </div>
-<iframe name="iframe1" id="iframe1" src="action/upload.php"></iframe>
+<iframe name="iframe1" id="iframe1" style="display: none" src="action/upload.php"></iframe>
 </body>
 <script type="text/javascript">
-    const jsonStrName = '<?php echo json_encode($name,JSON_UNESCAPED_UNICODE);?>';
-    jsonName=JSON.parse(jsonStrName);
-    const jsonStrTime = '<?php echo json_encode($time,JSON_UNESCAPED_UNICODE);?>';
-    jsonTime=JSON.parse(jsonStrTime);
-    const jsonStrId = '<?php echo json_encode($id,JSON_UNESCAPED_UNICODE);?>';
-    jsonId=JSON.parse(jsonStrId);
+    const jsonStrName = '<?php echo json_encode($name, JSON_UNESCAPED_UNICODE);?>';
+    jsonName = JSON.parse(jsonStrName);
+    const jsonStrTime = '<?php echo json_encode($time, JSON_UNESCAPED_UNICODE);?>';
+    jsonTime = JSON.parse(jsonStrTime);
+    const jsonStrId = '<?php echo json_encode($id, JSON_UNESCAPED_UNICODE);?>';
+    jsonId = JSON.parse(jsonStrId);
     const fileListitemGroup = $("#fileListitemGroup");
     for (let i = 0; i < <?php echo $arrayLength;?>; ++i) {
-        let objDiv1=$("<div>",{
+        let objDiv1 = $("<div>", {
             class: "fileListitem"
         });
         objDiv1.appendTo(fileListitemGroup);
-        let objDiv2=$("<div>",{
-            css:{
+        let objDiv2 = $("<div>", {
+            css: {
                 position: "relative",
                 float: "left",
                 width: "50px",
@@ -116,11 +109,11 @@ $i=0;
             }
         });
         objDiv2.appendTo(objDiv1);
-        let objImg=$("<img>",{
-            alt:"",
-            src:"image/icon/txt_icon.png",
-            height:"30px",
-            width:"30px",
+        let objImg = $("<img>", {
+            alt: "",
+            src: "image/icon/txt_icon.png",
+            height: "30px",
+            width: "30px",
             css: {
                 margin: "auto",
                 position: "absolute",
@@ -131,8 +124,8 @@ $i=0;
             }
         });
         objImg.appendTo(objDiv2);
-        let objSpan=$("<span>",{
-            css:{
+        let objSpan = $("<span>", {
+            css: {
                 position: "relative",
                 float: "left",
                 fontsize: "12px",
@@ -141,22 +134,22 @@ $i=0;
         });
         objSpan.html(jsonName[i]);
         objSpan.appendTo(objDiv1);
-        let objDiv3=$("<div>",{
-            id:"fileListitemButtongroup"
+        let objDiv3 = $("<div>", {
+            id: "fileListitemButtongroup"
         });
         objDiv3.appendTo(objDiv1);
-        let objSpanTime=$("<span>");
+        let objSpanTime = $("<span>");
         objSpanTime.appendTo(objDiv3);
-        objSpanTime.html('创建时间:'+jsonTime[i]+'   ');
-        let objInputEdit=$("<input>",{
+        objSpanTime.html('创建时间:' + jsonTime[i] + '   ');
+        let objInputEdit = $("<input>", {
             type: "button",
             value: "编辑"
         });
         objInputEdit.appendTo(objDiv3);
-        objInputEdit.click(function (){
-            location.href="file_annotation.php?id="+jsonId[i];
+        objInputEdit.click(function () {
+            location.href = "file_annotation.php?id=" + jsonId[i];
         })
-        let objInputDel=$("<input>",{
+        let objInputDel = $("<input>", {
             type: "button",
             value: "删除"
         });

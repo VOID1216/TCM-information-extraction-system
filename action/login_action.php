@@ -21,7 +21,7 @@ if (!empty($username) && !empty($password)) { //建立连接
 //        fclose($f); //跳转到loginsucc.php页面
         switch ($level) {
             case "0" :
-                echo "你是超级管理员，鉴于很厉害的样子，界面还没想好！！！";
+                header("Location:../file_list.php");//临时举措！！！！！！！
                 break;
             case "1" :
                 header("Location:../file_list.php?level=1");// 高级管理员
