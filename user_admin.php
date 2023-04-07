@@ -75,14 +75,15 @@ if(isset($_POST["userAddandEditbutton"])){
 <div>
     <div id="header" class="header"><!-- 网页最上方TOP-->
         <div class="headerTitlepic"><!-- 网页最上方TOP左侧LOGO位置 -->
-            <img src="image/webtitle.png" width="380px" height="50px" style="margin: auto;position: relative;top: 0;left: 20px;bottom: 0;right: 0;"/><!--LOGO图片-->
+            <img src="image/webtitle.png" width="380px" height="50px"
+                 style="margin: auto;position: relative;top: 0;left: 20px;bottom: 0;right: 0;"/><!--LOGO图片-->
         </div>
         <div id="headerUser" class="headerUser">
-            <img src="image/icon/user.png" height="45px" width="45px" alt=""/>
-            <div style="text-align: center;margin-top: 0px ; position: absolute; top:10px;left:50px;" >李应龙</div>
+            <img src="image/icon/user.png" height="45px" width="45px"/>
+            <div id="userName" style="text-align: center;margin-top: 0 ; position: absolute; top:10px;left:50px;"></div>
         </div><!-- 网页最上方TOP右侧用户位置 -->
     </div>
-    <div id="leftMenu" class="leftMenu"><!-- 网页左侧Left跳转功能栏 -->
+    <div id="leftMenu" class="leftMenu"  style="width: 150px;"><!-- 网页左侧Left跳转功能栏 -->
         <ul class="leftMenulist">
             <li onclick="pageJump('file_list')"><span style="display: block; text-align: center; line-height: 50px; color: white;">文章列表</span></li><!-- 按钮内容 -->
             <li onclick="pageJump('user_admin')"><span style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span></li>
@@ -99,7 +100,7 @@ if(isset($_POST["userAddandEditbutton"])){
                     </div>全选
                         <input onclick="formSubmit('userListForm')" id="userDelbutton" name="userDelbutton" type="button" value="删除用户" style="margin: 10px;"/>
                 </div>
-                <div id="operateContainermiddleBlock" >
+                <div id="operateContainermiddleBlock">
                     <form action="" method="post">
                     用户名<input id="userNameinput" name="userNameinput" type="text" style="margin: 10px;" value="<?php echo $userName; ?>"/>密码<input id="userPasswordinput" name="userPasswordinput" type="text" style="margin: 10px;" value="<?php echo $userPassword; ?>"/>
                     权限<select id="userLevelselect" name="userLevelselect" style="margin-left:0px"><!-- 向右调整一下 -->
@@ -154,6 +155,11 @@ if(isset($_POST["userAddandEditbutton"])){
 </div>
 </body>
 <script>
+    if (sessionStorage.id === undefined){
+        window.location.href = 'login.php';
+    } else {
+        $('#userName').html(sessionStorage.id);
+    }
     function checkboxIschecked(e){
         //传入全选checkbox
         //作用：判断全选框是否被勾选并勾选用户全选框
@@ -182,7 +188,7 @@ if(isset($_POST["userAddandEditbutton"])){
     function pageJump(page){
         //传入Page名
         //作用页面跳转
-        if (page == ""){
+        if (page === ""){
             alert("页面开发中，敬请期待!");
         }else {
             window.location.href=page+".php";

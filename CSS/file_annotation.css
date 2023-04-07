@@ -1,141 +1,148 @@
-		.header{
-			/*顶部长条*/
-			background-color: #6495ED;
-			width: max-content;
-			height: 80px;
-			position: relative;
-			top: 0;
-			min-width: 100%;
-			border-radius: 10px;
-		}
-		.leftMenu{
-			/*左侧页面跳转菜单*/
-			width: 150px;
-			border-radius: 10px;
-			height: calc(100vh - 116px);
-			position: relative;
-			float: left;
-			margin-top: 5px;
-			border: #ff0000 1px solid;
-			background-color: #6495ED;
-		}
-		.leftMenulist{
-			/*左侧跳转菜单栏按钮表*/
-			margin-top: 80px;
-			padding: 0;
-			list-style-type: none;
-		}
-		.leftMenulist li{
-			/*左侧跳转菜单栏单个按钮*/
-			list-style: none;
-			background-color: #6495ED;
-			position: relative;
-			height: 50px;
-		}
-		.leftMenulist li:hover{
-			/*鼠标移动至左侧跳转菜单栏单个按钮颜色变换*/
-			background-color: #4169E1;
-		}
-		.leftMenulist li:active{
-			/*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
-			background-color: #00008B;
-		}
-		.headerLogo{
-			/*顶部左侧LOGO处*/
-			border: 1px solid #ff0000;
-			width: 200px ;
-			height: 50px;
-			float: left;
-			position: relative;
-			margin: 10px;
-		}
-		.headerTitlepic{
-			/*顶部LOGO右边侧网站标题处*/
-			border: 1px solid #ff0000;
-			width: 400px ;
-			height: 50px;
-			float: left;
-			position: relative;
-			margin: 10px 10px 10px 0;
-		}
-		.headerUser{
-			/*顶部右侧用户板块处*/
-			border: 1px solid #ff0000;
-			width: 200px ;
-			height: 50px;
-			float: right;
-			position: relative;
-			margin: 10px;
-		}
-		.svgMaincontainer {
-			/*svg外部div样式,作用是加滚动条*/
-			width: calc(100% - 245px);
-			padding: 10px;
-			height: calc(100vh - 326px);
-			float: left;
-			position: relative;
-			border: solid 1px #ff0000;
-			margin-top: 10px;
-			margin-left: 25px;
-			overflow: scroll;
-		}
-		.fileInfocontainer{
-			/*svg上方显示文件信息板块*/
-			width: calc(100% - 245px);
-			height:45px;
-			border: #ff0000 solid 1px;
-			position: relative;
-			float: left;
-			margin-left: 25px;
-			margin-top:16px ;
-			padding-left: 10px;
-			padding-right: 10px;
-		}
+.header {
+    /*顶部长条*/
+    background-color: #6495ED;
+    width: max-content;
+    height: 80px;
+    position: relative;
+    top: 0;
+    min-width: 100%;
+    border-radius: 10px;
+}
 
-		.labelInfocontainer{
-			/*svg上方显示标签信息板块，设置滚动条*/
-			width: calc(100% - 245px);
-			height:100px;
-			/*overflow: scroll;*/
-			border: #66CCFF solid 1px;
-			position: relative;
-			float: left;
-			margin-left: 25px;
-			margin-top:5px ;
-			padding-left: 10px;
-			padding-right: 10px;
-			padding-top: 10px;
-			padding-bottom: 5px;
-		}
-		.label_box{
-			/* 装label盒子的属性 */
-			padding-top: 10px;
-			padding-bottom: 10px;
-			/*设置盒子里面控件不会应为换行而断开的参数*/
-			display: flex;
-			justify-content: flex-start;
-			flex-wrap: wrap;
-		}
-		.label_nav{
-			/*每一个标签的属性*/
-			width: auto;
-			height: auto;
-			border-radius: 5px;
-			margin-top: 5px;
-			margin-left: 5px;
-			padding: 3px;
-		}
-		.addLabel_button{
-			/*添加标签的button的属性*/
-			width: auto;
-			height: auto;
-			border-radius: 5px;
-			background-color: #34a780;
-			color: #fffcff;
-			margin-top: 5px;
-			margin-left: 5px;
-			padding: 3px;
-			border-style: none;
-		}
+.leftMenu {
+    /*左侧页面跳转菜单*/
+    width: 200px;
+    border-radius: 10px;
+    height: calc(100vh - 116px);
+    position: relative;
+    float: left;
+    margin-top: 5px;
+    /*border: #ff0000 1px solid;*/
+    background-color: #6495ED;
+}
+
+.leftMenulist {
+    /*左侧跳转菜单栏按钮表*/
+    margin-top: 80px;
+    padding: 0;
+    list-style-type: none;
+}
+
+.leftMenulist li {
+    /*左侧跳转菜单栏单个按钮*/
+    list-style: none;
+    background-color: #6495ED;
+    position: relative;
+    height: 50px;
+}
+
+.leftMenulist li:hover {
+    /*鼠标移动至左侧跳转菜单栏单个按钮颜色变换*/
+    background-color: #4169E1;
+}
+
+.leftMenulist li:active {
+    /*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
+    background-color: #00008B;
+}
+
+.headerLogo {
+    /*顶部左侧LOGO处*/
+    /*border: 1px solid #ff0000;*/
+    width: 200px;
+    height: 50px;
+    float: left;
+    position: relative;
+    margin: 10px;
+}
+
+.headerTitlepic {
+    /*顶部LOGO右边侧网站标题处*/
+    /*border: 1px solid #ff0000;*/
+    width: 400px;
+    height: 50px;
+    float: left;
+    position: relative;
+    margin: 10px 10px 10px 0;
+}
+
+.headerUser {
+    /*顶部右侧用户板块处*/
+    /*border: 1px solid #ff0000;*/
+    width: 200px;
+    height: 50px;
+    float: right;
+    position: relative;
+    margin: 10px;
+}
+
+.svgMaincontainer {
+    /*svg外部div样式,作用是加滚动条*/
+    width: calc(100% - 245px);
+    padding: 10px;
+    height: calc(100vh - 326px);
+    float: left;
+    position: relative;
+    /*border: solid 1px #ff0000;*/
+    margin-top: 10px;
+    margin-left: 25px;
+    overflow-y: scroll;
+}
+
+.fileInfocontainer {
+    /*svg上方显示文件信息板块*/
+    width: calc(100% - 245px);
+    height: 45px;
+    /*border: #ff0000 solid 1px;*/
+    position: relative;
+    float: left;
+    margin-left: 25px;
+    margin-top: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.labelInfocontainer {
+    /*svg上方显示标签信息板块，设置滚动条*/
+    width: calc(100% - 245px);
+    height: 100px;
+    /*overflow: scroll;*/
+    border: #66CCFF solid 1px;
+    position: relative;
+    float: left;
+    margin-left: 25px;
+    margin-top: 5px;
+    padding: 10px 10px 5px;
+}
+
+.label_box {
+    /* 装label盒子的属性 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*设置盒子里面控件不会应为换行而断开的参数*/
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.label_nav {
+    /*每一个标签的属性*/
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 3px;
+}
+
+.addLabel_button {
+    /*添加标签的button的属性*/
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    background-color: #34a780;
+    color: #fffcff;
+    border-style: none;
+}
 
 		

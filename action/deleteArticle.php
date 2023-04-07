@@ -5,4 +5,5 @@ if (isset($_GET)){
     $queryString="delete from assignment  where id='$articleId'";
     mysqli_query($link,$queryString);
     echo mysqli_error($link);
+    echo 'success';
 }

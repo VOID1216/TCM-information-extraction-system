@@ -1,7 +1,7 @@
 <?php
 header("content-type:text/html; charset=UTF-8");
-if(isset($_POST["btnUpload"])) {
-    if ($_FILES["myFile"]["type"] == 'text/plain') {
+if(isset($_POST)) {
+    if (@$_FILES["myFile"]["type"] == 'text/plain') {
         $fileName = $_FILES["myFile"]["name"];
 //        $fileName=iconv('UTF-8','GBK',$fileName);
         move_uploaded_file($_FILES["myFile"]["tmp_name"],"../file/".$fileName);
@@ -26,5 +26,6 @@ if(isset($_POST["btnUpload"])) {
         $queryString="insert into assignment(id,name,set_time,text)VALUES('$countId','$fileName','$date','$s')";
         mysqli_query($link,$queryString);
         echo mysqli_error($link);
+        echo 'success';
     }
 }

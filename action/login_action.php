@@ -1,15 +1,17 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");
-$username = isset($_POST['username']) ? $_POST['username'] : "";
+session_start();
+$id = isset($_POST['id']) ? $_POST['id'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
-if (!empty($username) && !empty($password)) { //建立连接
+if (!empty($id) && !empty($password)) { //建立连接
     $conn = mysqli_connect('localhost', 'root', '', 'smart_annotation'); //准备SQL语句
-    $sql_select = "SELECT username,password,level FROM user WHERE username = '$username' AND password = '$password'"; //执行SQL语句
+    $sql_select = "SELECT id,username,password,level FROM user WHERE id = '$id' AND password = '$password'"; //执行SQL语句
     $ret = mysqli_query($conn, $sql_select);
     $row = mysqli_fetch_array($ret); //判断用户名或密码是否正确
     var_dump($row);
     $level = $row['level'];//获取权限值
-    if ($username == $row['username'] && $password == $row['password'])
+    $username = $row['username'];
+    if ($id == $row['id'] && $password == $row['password'])
     {
 //        $ip = $_SERVER['REMOTE_ADDR'];
 //        $date = date('Y-m-d H:m:s');
@@ -21,21 +23,24 @@ if (!empty($username) && !empty($password)) { //建立连接
 //        fclose($f); //跳转到loginsucc.php页面
         switch ($level) {
             case "0" :
-                header("Location:../file_list.php");//临时举措！！！！！！！
+                header("Location:../file_list.php");//超级管理员
+                $_SESSION['level'] = 0;
                 break;
             case "1" :
-                header("Location:../file_list.php?level=1");// 高级管理员
+                header("Location:../file_list.php");// 高级管理员
+                $_SESSION['level'] = 1;
                 break;
             case "2" :
-                header("Location:../file_list.php?level=2");// 普通管理员
+                header("Location:../file_list.php");// 普通管理员
+                $_SESSION['level'] = 2;
                 break;
         }
     }
     else
     {
         //用户名或密码错误，赋值err为1
-        header("Location:../login.php?err=1&username=$username");
+        header("Location:../login.php?err=1&id=$id");
     }
 } else { //用户名或密码为空，赋值err为2
-    header("Location:../login.php?err=2&username=$username");
+    header("Location:../login.php?err=2&id=$id");
 }

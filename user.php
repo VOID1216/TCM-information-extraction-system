@@ -23,8 +23,6 @@
 			<div id="leftMenu" class="leftMenu"><!-- 网页左侧Left跳转功能栏 -->
 				<ul class="leftMenulist">
 					<li onclick="pageJump()" id="file_list"><span style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</span></li><!-- 按钮内容 -->
-					<li><span style="display: block; text-align: center; line-height: 50px; color: white; ">实体标签</span></li>
-					<li><span style="display: block; text-align: center; line-height: 50px; color: white; ">因果标签</span></li>
 					<li><span style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span></li>
 					<li><span style="display: block; text-align: center; line-height: 50px; color: white; ">日志</span></li>
 					<li><span style="display: block; text-align: center; line-height: 50px; color: white; ">数据备份站</span></li>

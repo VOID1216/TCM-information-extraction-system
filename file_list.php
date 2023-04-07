@@ -1,5 +1,11 @@
 <?php
 header("content-type:text/html; charset=UTF-8");
+session_start();
+if (isset($_SESSION['level'])){
+    $level = $_SESSION['level'];
+}else{
+    $level = 3;
+}
 $link = mysqli_connect("localhost", "root", "", "smart_annotation");
 $queryString = "select id,name,set_time from assignment;";
 $rs = mysqli_query($link, $queryString);
@@ -39,15 +45,15 @@ $i = 0;
         </div>
         <div id="headerUser" class="headerUser">
             <img src="image/icon/user.png" height="45px" width="45px"/>
-            <div style="text-align: center;margin-top: 0px ; position: absolute; top:10px;left:50px;">李应龙</div>
+            <div id="userName" style="text-align: center;margin-top: 0px ; position: absolute; top:10px;left:50px;"></div>
         </div><!-- 网页最上方TOP右侧用户位置 -->
     </div>
-    <div id="leftMenu" class="leftMenu"><!-- 网页左侧Left跳转功能栏 -->
+    <div id="leftMenu" class="leftMenu" style="width: 150px;"><!-- 网页左侧Left跳转功能栏 -->
         <ul class="leftMenulist">
-            <li onclick="pageJump('file_list')"><span
-                        style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</span>
+            <li onclick="pageJump('file_list')"><spange
+                        style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</spange>
             </li><!-- 按钮内容 -->
-            <li onclick="pageJump('user_admin')"><span
+            <li id="uerAdmin" onclick="pageJump('user_admin')"><span
                         style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span>
             </li>
             <li onclick="pageJump('')"><span
@@ -61,11 +67,9 @@ $i = 0;
         <div class="operateContainer"><!-- 主要操作区上方的长条操作板块样式 -->
             <div id="operateContainerBlock">
                 <div style="float: right;height: 45px;margin-top: 10px">
-                    <form id="formUpload" name="formUpload" action="/action/upload.php" method="post"
-                          target="iframe1" enctype="multipart/form-data">
+                    <form id="formUpload" name="formUpload" action="/action/upload.php" target="iframeUpload" method="post" enctype="multipart/form-data">
                         <input type="file" id="myFile" name="myFile">
-                        <input type="submit" id="btnUpload" name="btnUpload"
-                               style="margin-left: 10px;margin-right: 30px;" value="添加文件" onclick="upload()">
+                        <button type="button" id="btnUpload" name="btnUpload" style="margin-right: 30px;">添加文件</button>
                     </form>
                 </div>
                 <div style="display: inline-block;position: relative; float: right; margin-right: 22px;margin-top: 10px;height: 45px">
@@ -90,9 +94,24 @@ $i = 0;
         </div>
     </div>
 </div>
-<iframe name="iframe1" id="iframe1" style="display: none" src="action/upload.php"></iframe>
+<iframe src="action/upload.php" id="iframeUpload" name="iframeUpload" style="display: none"></iframe>
+<input type="hidden" id="hiddenInput" name="hiddenInput" value="success">
 </body>
 <script type="text/javascript">
+    console.log(sessionStorage.id);
+    if (sessionStorage.id === undefined){
+        window.location.href = 'login.php';
+    } else {
+        $('#userName').html(sessionStorage.id);
+    }
+    var level;
+    level = 3;
+    level = <?php echo $level;?>;
+    if (level === 3){
+        $('#uerAdmin').css({
+            display: 'none'
+        })
+    }
     const jsonStrName = '<?php echo json_encode($name, JSON_UNESCAPED_UNICODE);?>';
     jsonName = JSON.parse(jsonStrName);//数组--存储文章姓名
     const jsonStrTime = '<?php echo json_encode($time, JSON_UNESCAPED_UNICODE);?>';
@@ -102,44 +121,45 @@ $i = 0;
     //const jsonStrIsDelete = '<?php //echo json_encode($isDelete, JSON_UNESCAPED_UNICODE);?>//';
     //jsonIsDelete = JSON.parse(jsonStrIsDelete);//数组--存储文章删除状态
     const fileListitemGroup = $("#fileListitemGroup");
+    //从数据库取文件列表，DOM生成在页面
     for (let i = 0; i < <?php echo $arrayLength;?>; ++i) {
         let objDiv1 = $("<div>", {
-                class: "fileListitem"
-            });
+            class: "fileListitem"
+        });
         objDiv1.appendTo(fileListitemGroup);
         let objDiv2 = $("<div>", {
-                css: {
-                    position: "relative",
-                    float: "left",
-                    width: "50px",
-                    height: "40px",
-                    border: "1px solid #00ff00"
-                }
-            });
+            css: {
+                position: "relative",
+                float: "left",
+                width: "50px",
+                height: "40px",
+                border: "1px solid #00ff00"
+            }
+        });
         objDiv2.appendTo(objDiv1);
         let objImg = $("<img>", {
-                alt: "",
-                src: "image/icon/txt_icon.png",
-                height: "30px",
-                width: "30px",
-                css: {
-                    margin: "auto",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0
-                }
-            });
+            alt: "",
+            src: "image/icon/txt_icon.png",
+            height: "30px",
+            width: "30px",
+            css: {
+                margin: "auto",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0
+            }
+        });
         objImg.appendTo(objDiv2);
         let objSpan = $("<span>", {
-                css: {
-                    position: "relative",
-                    float: "left",
-                    fontsize: "12px",
-                    marginTop: "14px"
-                }
-            });
+            css: {
+                position: "relative",
+                float: "left",
+                fontsize: "12px",
+                marginTop: "14px"
+            }
+        });
         objSpan.html(jsonName[i]);
         objSpan.appendTo(objDiv1);
         let objDiv3 = $("<div>", {
@@ -176,9 +196,13 @@ $i = 0;
                 btnYes.bind('click', () => {
                     $.ajax({
                         url: '/action/deleteArticle.php?id='+jsonId[i],
+                        success: (res) => {
+                            if (res === 'success'){
+                                location.replace(location.href);
+                            }
+                        }
                     });
                     objDialog.remove();
-                    location.replace(location.href);
                 });
                 btnNo.bind('click', () => {
                     objDialog.remove();
@@ -189,9 +213,42 @@ $i = 0;
         objInputDel.appendTo(objDiv3);
     }
 
-    function upload() {
-        $("#formUpload").submit();
-        location.replace(location.href);
+    function loadPage(){
+        location.reload();
     }
+
+    //页面跳转
+    function pageJump(page){
+        //传入Page名
+        //作用页面跳转
+        if (page === ""){
+            alert("页面开发中，敬请期待!");
+        }else {
+            window.location.href=page+".php";
+        }
+    }
+
+        $("#btnUpload").bind(
+            'click',
+            function () {
+            var formData1=new FormData($("#formUpload")[0]);
+            $.ajax({
+                type:"post",
+                url:"/action/upload.php",
+                dataType:"json",
+                data:formData1,
+                //是否缓存
+                cache: false,
+                //当设置为false的时候,jquery 的ajax 提交的时候会序列化 data
+                processData: false,
+                /*contentType都是默认的值：application/x-www-form-urlencoded；
+                *表单中设置的contentType为"multipart/form-data"；
+                 * ajax 中 contentType 设置为 false ，是为了避免 JQuery对要提交
+                 * 的表单中的enctype值修改*/
+                contentType: false
+            });
+            setInterval(() => {location.replace(location.href)},100);
+        })
+
 </script>
 </html>

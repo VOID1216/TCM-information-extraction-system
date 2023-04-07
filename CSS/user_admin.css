@@ -4,7 +4,7 @@
 	width: max-content;
 	height: 80px;
 	position: relative;
-	top: 0px;
+	top: 0;
 	min-width: 100%;
 }
 .leftMenu{
@@ -21,7 +21,7 @@
 .leftMenulist{
 	/*左侧跳转菜单栏按钮表*/
 	margin-top: 80px;
-	padding: 0px;
+	padding: 0;
 	list-style-type: none;
 }
 .leftMenulist li{
@@ -122,7 +122,7 @@
 	position: relative;
 	float: right;
 }
-.userListitem{
+.userListForm{
 	/*用户列表中一个用户的外可变化div样式*/
 	opacity:0.8;
 	background: #e1edff;
@@ -133,13 +133,13 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-#userListitemBlock{
+#userListFormBlock{
 	/*在userListitem中防止窗口变窄其他div被挤下去的div样式*/
 	min-width: 1280px;
 	height:29px;
 	border: #ff13cc solid 1px;
 }
-.userListitemButtongroup{
+.userListFormButtongroup{
 	/*列表中单个用户对象的按钮组样式*/
 	position: relative;
 	float: right;
@@ -147,5 +147,3 @@
 	margin-right: 10px;
 	margin-left: 10px;
 }
-
-		

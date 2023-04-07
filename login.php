@@ -4,6 +4,7 @@
     <title>中医信息抽取系统</title>
     <link rel="stylesheet" href="CSS/login.css">
     <meta name="content-type" charset="UTF-8">
+    <script src="JS/Jquery.js"></script>
 </head>
 <body>
 <div id="bigBox">
@@ -11,7 +12,7 @@
     <form id="login_form" action="action/login_action.php" method="post">
         <div class="inputBox">
             <div class="inputText">
-                <label for="username"></label><input type="text" id="username" name="username" placeholder="请输入账号" value="<?php echo $username=isset($_GET['username']) ? $_GET['username'] : '';?>">
+                <label for="id"></label><input type="text" id="id" name="id" placeholder="请输入账号" value="<?php echo $id=isset($_GET['id']) ? $_GET['id'] : '';?>">
             </div>
             <div class="inputText">
                 <label for="password"></label><input type="password" id="password" name="password" placeholder="请输入密码">
@@ -31,9 +32,15 @@
             </div>
         </div>
         <div>
-            <input type="submit" id="login" name="login" value="登录" class="loginButton">
+            <input type="button" id="login" name="login" value="登录" class="loginButton" onclick="doSession()">
         </div>
     </form>
 </body>
+<script>
+    function doSession(){
+        sessionStorage.id = document.getElementById('id').value;
+        $('#login_form').submit();
+    }
+</script>
 </html>
 

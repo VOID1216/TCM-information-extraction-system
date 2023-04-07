@@ -16,10 +16,10 @@
 				"text":""
 			}],
 			"labels":[{
-				"starindex":0,
-				"endindex":0,
+				"starIndex":0,
+				"endIndex":0,
 				"id":0,
-				"caregoryId":""
+				"categoryId":""
 			}],
 			"connectionCategories":[{
 				"id":"",

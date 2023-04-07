@@ -2,6 +2,7 @@
 header("content-type:text/html; charset=UTF-8");
 if (isset($_POST)){
     $jsonString = file_get_contents('php://input');
+    echo $jsonString;
     $json=json_decode($jsonString,true);
     $id=$json['data']['id'];
     $link = mysqli_connect('localhost','root','','smart_annotation');
