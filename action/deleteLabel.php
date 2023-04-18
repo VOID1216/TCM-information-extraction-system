@@ -8,18 +8,11 @@ if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQU
     $link = mysqli_connect('localhost','root','','smart_annotation');
     $queryString = "select text from assignment where id='$id'";
     $row = mysqli_fetch_row(mysqli_query($link,$queryString));
-//    echo $row[0];
     $json = json_decode($row[0],true);
-//    foreach ($json['data']['annotation']['labels'] as $val) {
-//        if ($val['id'] == $labelId) {
-//            unset($json['data']['annotation']['labels'][$count]);
-//            break;
-//        }
-//        $count++;
-//    }
     for ($i = 0; $i < count($json['data']['annotation']['labels']); ++$i){
         if ($json['data']['annotation']['labels'][$i]['id'] == $labelId) {
             unset($json['data']['annotation']['labels'][$i]);
+            $json['data']['annotation']['labels']=array_values($json['data']['annotation']['labels']);
             break;
         }
     }

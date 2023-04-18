@@ -140,6 +140,9 @@
     width: auto;
     height: auto;
     border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 3px;
     background-color: #34a780;
     color: #fffcff;
     border-style: none;

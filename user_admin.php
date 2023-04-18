@@ -1,5 +1,7 @@
 <?php
 require_once "db_config.php";
+session_start();
+$userName = $_SESSION['userName'];
 $userTablename="user";
 $userNum=getCurrentPageUserListNum($link,$userTablename,"");
 function getCurrentPageUserListNum($link,$Table,$addString){
@@ -155,10 +157,11 @@ if(isset($_POST["userAddandEditbutton"])){
 </div>
 </body>
 <script>
+    console.log('<?php echo $userName?>');
     if (sessionStorage.id === undefined){
         window.location.href = 'login.php';
     } else {
-        $('#userName').html(sessionStorage.id);
+        $('#userName').html('<?php echo $userName?>');
     }
     function checkboxIschecked(e){
         //传入全选checkbox

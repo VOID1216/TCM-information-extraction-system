@@ -40,6 +40,7 @@
 			/*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
 			background-color: #00008B;
 		}
+
 		.headerLogo{
 			/*顶部左侧LOGO处*/
 			/*border: 1px solid #ff0000;*/
@@ -132,12 +133,4 @@
 		.fileListitem:active{
 			/*文件列表中鼠标点击文件颜色改变样式*/
 			background-color: #4169E1;
-		}
-		#fileListitemButtongroup{
-			/*单个文件对象的按钮组样式*/
-			position: relative;
-			float: right;
-			margin-top: 10px;
-			margin-right: 10px;
-			margin-left: 10px;
 		}

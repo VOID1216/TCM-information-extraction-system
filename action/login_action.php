@@ -5,12 +5,14 @@ $id = isset($_POST['id']) ? $_POST['id'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 if (!empty($id) && !empty($password)) { //建立连接
     $conn = mysqli_connect('localhost', 'root', '', 'smart_annotation'); //准备SQL语句
-    $sql_select = "SELECT id,username,password,level FROM user WHERE id = '$id' AND password = '$password'"; //执行SQL语句
+    $sql_select = "SELECT id,username,password,level,userGroup FROM user WHERE id = '$id' AND password = '$password'"; //执行SQL语句
     $ret = mysqli_query($conn, $sql_select);
-    $row = mysqli_fetch_array($ret); //判断用户名或密码是否正确
+    $row = mysqli_fetch_assoc($ret); //判断用户名或密码是否正确
     var_dump($row);
     $level = $row['level'];//获取权限值
-    $username = $row['username'];
+    $userName = $row['username'];
+    $_SESSION['userName'] = $userName;
+    $_SESSION['group'] = $row['userGroup'];
     if ($id == $row['id'] && $password == $row['password'])
     {
 //        $ip = $_SERVER['REMOTE_ADDR'];
@@ -23,7 +25,7 @@ if (!empty($id) && !empty($password)) { //建立连接
 //        fclose($f); //跳转到loginsucc.php页面
         switch ($level) {
             case "0" :
-                header("Location:../file_list.php");//超级管理员
+                header("Location:../file_list.php?name=".$row['username']);//超级管理员
                 $_SESSION['level'] = 0;
                 break;
             case "1" :
