@@ -1,89 +1,95 @@
-.header {
-    /*顶部长条*/
-    background-color: #6495ED;
-    width: max-content;
-    height: 80px;
-    position: relative;
-    top: 0;
-    min-width: 100%;
-    border-radius: 10px;
+html {
+	background-image:linear-gradient(to top, #ffffff ,transparent) ,url("../image/bk4.jpg");
+	/*filter: opacity(0);*/
+	min-width: 1000px;
+	height: calc(100%);
 }
-
-.leftMenu {
-    /*左侧页面跳转菜单*/
-    width: 200px;
-    border-radius: 10px;
-    height: calc(100vh - 116px);
-    position: relative;
-    float: left;
-    margin-top: 5px;
-    /*border: #ff0000 1px solid;*/
-    background-color: #6495ED;
+.header{
+	/*顶部长条*/
+	/*border:2px  solid rgb(167, 126, 73);*/
+	width: calc(100% - 42px);
+	margin-right: 25px;
+	height: 80px;
+	position: relative;
+	top: 0;
+	background-image: url("../image/12.jpg"),linear-gradient(to top, #ffffff ,transparent);
+	/*background: -webkit-linear-gradient(top,rgb(225, 219, 213,0.3) 0%, rgb(225, 219, 213,0.8) 30%,rgba(225, 219, 213,0.5)77%, rgba(167, 126, 73,0)99%);*/
+	/*min-width: 100%;*/
+	min-width: calc(100% - 280px);
 }
-
-.leftMenulist {
-    /*左侧跳转菜单栏按钮表*/
-    margin-top: 80px;
-    padding: 0;
-    list-style-type: none;
+.leftMenu{
+	/*左侧页面跳转菜单*/
+	width: 150px;
+	border-radius: 10px;
+	height: calc(100vh - 116px);
+	position: relative;
+	float: left;
+	margin-top: 9px;
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.71) 10% ,transparent) , url(../image/13.jpg);
+	background-color: bisque;
 }
+.leftMenulist{
+	/*左侧跳转菜单栏按钮表*/
+	padding: 28px;
+	margin-top: 76px;
+	list-style-type: none;
 
-.leftMenulist li {
-    /*左侧跳转菜单栏单个按钮*/
-    list-style: none;
-    background-color: #6495ED;
-    position: relative;
-    height: 50px;
 }
+.leftMenulist li{
+	/*左侧跳转菜单栏单个按钮*/
+	list-style: none;
+	background-color: burlywood;
+	position: relative;
+	height: 30px;
+	margin-top: 10px;
+	border: 1px solid black;
+	border-radius: 7px;
 
-.leftMenulist li:hover {
-    /*鼠标移动至左侧跳转菜单栏单个按钮颜色变换*/
-    background-color: #4169E1;
 }
-
-.leftMenulist li:active {
-    /*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
-    background-color: #00008B;
+.leftMenulist li:hover{
+	/*鼠标移动至左侧跳转菜单栏单个按钮颜色变换*/
+	background-color: rgb(241, 138, 12);
 }
-
-.headerLogo {
-    /*顶部左侧LOGO处*/
-    /*border: 1px solid #ff0000;*/
-    width: 200px;
-    height: 50px;
-    float: left;
-    position: relative;
-    margin: 10px;
+.leftMenulist li:active{
+	/*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
+	background-color: rgb(214, 123, 3);
 }
-
-.headerTitlepic {
-    /*顶部LOGO右边侧网站标题处*/
-    /*border: 1px solid #ff0000;*/
-    width: 400px;
-    height: 50px;
-    float: left;
-    position: relative;
-    margin: 10px 10px 10px 0;
+.headerLogo{
+	/*顶部左侧LOGO处*/
+	border: 1px solid #ff0000;
+	width: 200px ;
+	height: 50px;
+	float: left;
+	position: relative;
+	margin: 10px;
 }
+.headerTitlepic{
+	/*顶部LOGO右边侧网站标题处*/
 
-.headerUser {
-    /*顶部右侧用户板块处*/
-    /*border: 1px solid #ff0000;*/
-    width: 200px;
-    height: 50px;
-    float: right;
-    position: relative;
-    margin: 10px;
+	width: 400px ;
+	height: 50px;
+	float: left;
+	position: relative;
+	margin: 15px 10px 10px 0;
 }
-
+.headerUser{
+	/*顶部右侧用户板块处*/
+	width: 200px ;
+	height: 50px;
+	float: right;
+	align-items: center;
+	position: relative;
+	margin: 20px;
+}
 .svgMaincontainer {
+	background-color:#ffffff8a;
     /*svg外部div样式,作用是加滚动条*/
-    width: calc(100% - 245px);
-    padding: 10px;
-    height: calc(100vh - 326px);
+	border: 6px double rgb(201, 191, 181);
+    width: calc(100% - 225px);
+    /*padding: 10px;*/
+    height: calc(100vh - 343px);
     float: left;
     position: relative;
-    /*border: solid 1px #ff0000;*/
     margin-top: 10px;
     margin-left: 25px;
     overflow-y: scroll;
@@ -93,6 +99,8 @@
     /*svg上方显示文件信息板块*/
     width: calc(100% - 245px);
     height: 45px;
+	background-color:#ffffff8a;
+	border: 6px double rgb(201, 191, 181);
     /*border: #ff0000 solid 1px;*/
     position: relative;
     float: left;
@@ -107,12 +115,14 @@
     width: calc(100% - 245px);
     height: 100px;
     /*overflow: scroll;*/
-    border: #66CCFF solid 1px;
+	border: 6px double rgb(201, 191, 181);
+	background-color: #ffffff8a;
     position: relative;
     float: left;
     margin-left: 25px;
     margin-top: 5px;
     padding: 10px 10px 5px;
+	overflow-y: scroll;
 }
 
 .label_box {
@@ -140,12 +150,11 @@
     width: auto;
     height: auto;
     border-radius: 5px;
-    margin-top: 5px;
-    margin-left: 5px;
-    padding: 3px;
     background-color: #34a780;
     color: #fffcff;
     border-style: none;
 }
-
+g{
+	user-select: none;
+}
 		

@@ -1,11 +1,11 @@
 <?php
+require_once '../db_config.php';
 if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest") {
     $id = $_GET['id'];
 //    $id = 3;
     $count=0;
     $labelId = file_get_contents('php://input');
 //    $labelId = '2_php_3';
-    $link = mysqli_connect('localhost','root','','smart_annotation');
     $queryString = "select text from assignment where id='$id'";
     $row = mysqli_fetch_row(mysqli_query($link,$queryString));
     $json = json_decode($row[0],true);

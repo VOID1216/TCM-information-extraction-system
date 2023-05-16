@@ -1,7 +1,8 @@
 <?php
+require_once './db_config.php';
 session_start();
-$scrollOldTop_list=0;
-$scrollOldTop_list= $_GET['scrollOldTop_list'];
+$scrollOldTop_list = 0;
+$scrollOldTop_list = $_GET['scrollOldTop_list'];
 $isTag = $_GET['isTag'];
 $userName = $_SESSION['userName'];
 if (isset($_SESSION['level'])) {
@@ -12,7 +13,6 @@ if (isset($_SESSION['level'])) {
 header("content-type:text/html; charset=UTF-8");
 $textId = $_GET['id'];
 $nowTag = $_GET['tag'];
-$link = mysqli_connect("localhost", "root", "", "smart_annotation");
 $queryString = "select name,text from assignment where id='$textId'";
 $rs = mysqli_query($link, $queryString);
 $row = mysqli_fetch_assoc($rs);
@@ -60,24 +60,33 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
     <div id="leftMenu" class="leftMenu" style="width: 150px;"><!-- 网页左侧Left跳转功能栏 -->
         <ul class="leftMenulist">
             <li onclick="pageJump('file_list')">
-                <span style="display: block; text-align: center; line-height: 50px; color: white; ">文章列表</span>
+                <span
+                    style="display: block; text-align: center; line-height: 30px; color: black;">文章列表
+                </span>
             </li><!-- 按钮内容 -->
             <li id="uerAdmin" onclick="pageJump('user_admin')">
-                <span style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span>
+                <span
+                    style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span>
             </li>
-            <li onclick="pageJump('')">
-                <span style="display: block; text-align: center; line-height: 50px; color: white; ">日志</span></li>
-            <li onclick="pageJump('')">
-                <span style="display: block; text-align: center; line-height: 50px; color: white; ">数据备份站</span>
+
+            <li>
+                <span
+                    style="display: block; text-align: center; line-height: 30px; color: black;">日志
+                </span>
             </li>
+            <li>
+                <span
+                    style="display: block; text-align: center; line-height: 30px; color: black;">数据备份站
+                </span>
+            </li>
+
         </ul>
     </div>
     <div style="">
         <div class="fileInfocontainer"><!-- 作用是加上文件信息 -->
-            <div style="position: relative; float: left;width: 50px;height: 43px;border: #00ff00 solid 1px;">
+            <div style="position: relative; float: left;width: 50px;height: 43px;">
                 <!-- 装入文件图片 -->
-                <img src="image/icon/txt_icon.png" height="30px" width="30px"
-                     style="margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;">
+                <img src="image/icon/txt_icon.png" height="40px" width="43px" style="margin-top: 3px">
             </div>
             <span style="float:left;margin-top: 10px"><?php echo $row['name'] ?></span>
             <button id="btnIsTag"
@@ -104,14 +113,14 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
             <input type="hidden" id="selectedText" name="selectedText" value=""/>
         </form>
         <div id="svgMaincontainer" class="svgMaincontainer"><!-- 作用是加上个滚动条 -->
-            <svg id="svgArticle"
-                 style=" background-color:lavender;" xmlns="http://www.w3.org/2000/svg">
+            <svg id="svgArticle" xmlns="http://www.w3.org/2000/svg">
                 <!-- svg框，需要改变 height 属性增加滚动条的量,width固定长度 -->
                 <!-- <g><rect width="51" height="17" x="72" y="153" fill="red" rx="5" ry="5" /></g>-->
                 <text id="textArray" style="z-index: 100 white-space: pre; " x="0" y="15" fill="black">
                     <!-- svg框，需要改变 height 属性增加滚动条的量 -->
                 </text>
             </svg>
+
         </div>
     </div>
 </div>
@@ -465,7 +474,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
 
     ////////////////////////// 《《《《《渲染顺序二》》》》》  ///////文章处理函数 并且动态生成文章展示///////////////////////////////
     let widthOfScreen = document.body.clientWidth + 500;
-    console.log(json);
+    // console.log(json);
     let wenZhang = json['data']['annotation']['content'];
     wenZhang = wenZhang.split("￥").filter(item => item !== '');
     let objTextArray = document.getElementById("textArray");
@@ -483,7 +492,6 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
             let head = 0;
             let ifOnlyOneLine = true;
             for (let j = 0; j <= wenZhang[i].length; j++) {
-
                 if (codestr.indexOf(wenZhang[i][j]) === -1 && codestr1.indexOf(wenZhang[i][j]) === -1) {
                     // console.log(tempLength+" _tempLength");
                     tempLength = tempLength + 16;
@@ -531,7 +539,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
     // cutArticle(wenZhang);
     // console.log(cutArticle(wenZhang));
     function domArticle(wenZhang) {
-        objSvg.style.height = wenZhang.length * 51 + 100;
+        objSvg.style.height = wenZhang.length * 75 + 300;
         for (let i = 0; i < wenZhang.length; i++) {
             addTspan("tspan_", i, wenZhang);
         }
@@ -541,7 +549,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
         let objTspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan")
         objTspan.setAttribute("id", tspanName + i);
         objTspan.setAttribute("x", "10");
-        objTspan.setAttribute("dy", 51);
+        objTspan.setAttribute("dy", 51 + 24);
         objTspan.textContent = wenZhang[i];
         // console.log(objTspan);
         objTextArray.appendChild(objTspan);
@@ -571,7 +579,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
                     tempLength_forStart[0] = tempLength_forStart[1];
                     tempLength_forStart[1] = tempLength_forStart[1] - i.textContent.length;
                 }
-                if (tempLength_forEnd[1] >= 0) {
+                if (tempLength_forEnd[1] > 0) {
                     row_End++;
                     tempLength_forEnd[0] = tempLength_forEnd[1];
                     tempLength_forEnd[1] = tempLength_forEnd[1] - i.textContent.length;
@@ -594,34 +602,100 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
                 }
             }
             needTh['x'] = needTh['x'] + 9;
-            needTh['y'] = row_Start * 51 - 2;
         } else {
             let objTspan_start = document.getElementById("tspan_" + (row_Start - 1));
             let objTspan_end = document.getElementById("tspan_" + (row_End - 1));
-            // console.log(objTspan_start.innerHTML+"<<<<");
-            // console.log(objTspan_end.innerHTML+">>>>");
             objTspan_end.innerHTML = objTspan_start.innerHTML.slice(tempLength_forStart[0], objTspan_start.innerHTML.length) + objTspan_end.innerHTML;
             objTspan_start.innerHTML = objTspan_start.innerHTML.slice(0, tempLength_forStart[0]);
             needTh['x'] = 9;
-            needTh['y'] = row_End * 51 - 2;
+        }
+        needTh['now_long'] = tempLength_forStart[0];
+        needTh['tspan_id'] = row_End - 1;
+        for (let i = 0; i < row_End; i++) {
+            needTh['y'] = needTh['y'] + parseInt(document.getElementById("tspan_" + (i)).getAttribute("dy"));
+        }
+        for (let i = startIndex; i < endIndex; i++) {
+
         }
         // console.log(needTh);
-        // console.log("^^^^^^^^^^^^^^^")
         return needTh;
+    }
+
+    function labelWeight(labelArray) {
+        let labelGroup = [];
+        for (let i = 0; i < labelArray.length; i++) {
+            let needTh = changeAddressFrom_A_to_R(labelArray[i]['starIndex'], labelArray[i]['endIndex']);
+            labelGroup[i] = [0, 0, 0];
+            let anchor_now = (parseInt(labelArray[i]['starIndex']) + parseInt(labelArray[i]['endIndex'])) / 2;
+            let label_length_now = document.getElementById(labelArray[i]['categoryId']).innerText.length;
+            if (i !== 0) {
+                let anchor_before = (parseInt(labelArray[i - 1]['starIndex']) + parseInt(labelArray[i - 1]['endIndex'])) / 2;
+                let label_length_before = document.getElementById(labelArray[i - 1]['categoryId']).innerText.length;
+                if (anchor_now - anchor_before < (label_length_now + label_length_before) / 2) {
+                    labelGroup[i][0] = 1;
+                }
+            }
+            if (i !== (labelArray.length - 1)) {
+                let anchor_after = (parseInt(labelArray[i + 1]['starIndex']) + parseInt(labelArray[i + 1]['endIndex'])) / 2;
+                let label_length_after = document.getElementById(labelArray[i + 1]['categoryId']).innerText.length;
+                if (anchor_after - anchor_now < (label_length_now + label_length_after) / 2) {
+                    labelGroup[i][1] = 1;
+                }
+            }
+            labelGroup[i][2] = needTh['tspan_id'];
+        }
+        return labelGroup;
     }
 
     function SqlDraw() {
         let labelArray;
         labelArray = '<?php echo json_encode($labels); ?>';
         labelArray = JSON.parse(labelArray);
-        // console.log(labelArray);
+        let labelGroup = labelWeight(labelArray);
+        // console.log(labelGroup);
+
         if (labelArray !== "") {
-            for (let i in labelArray) {
+            var overLength = 0;
+            var happen = 0;
+            var lineId_young = 0;
+            for (let i = 0; i < labelArray.length; i++) {
+                let lineId_old = -1;
                 let needTh = changeAddressFrom_A_to_R(labelArray[i]['starIndex'], labelArray[i]['endIndex']);
-                // console.log(labelArray[i]['categoryId']);
-                DrawPath(0, (labelArray[i]['endIndex'] - labelArray[i]['starIndex']) * 17, document.getElementById(labelArray[i]['categoryId']).textContent, labelArray[i]['id'], document.getElementById(labelArray[i]['categoryId']).style.backgroundColor, needTh['x'], needTh['y'], <?php echo $textId;?>);
+                if (i < labelArray.length) {
+                    // console.log("turn:"+i)
+                    if (lineId_young == lineId_old || lineId_old == -1) {//判断是否为同一行
+                        lineId_old = lineId_young;
+                        lineId_young = labelGroup[i][2];
+                        if (happen==2){
+                            overLength=0;
+                        }
+                        if (labelGroup[i][0]==0&&labelGroup[i][1]==1){
+                            happen=1;       //happen 为1代表重叠开始发生
+                            overLength++;
+                        }
+                        if (labelGroup[i][0]==1&&labelGroup[i][1]==1){
+                            overLength++;
+                        }
+                        if (labelGroup[i][0]==1&&labelGroup[i][1]==0){
+                            happen=2;          //happen 为2代表重叠结束
+                            overLength++;
+                        }
+                        if (labelGroup[i][0]==0&&labelGroup[i][1]==0){
+                            overLength=0;
+                        }
+                    } else {
+                        lineId_young = labelGroup[i][2];
+                        overLength = 0;
+                    }
+                }
+                // console.log(overLength+" lineId_old:"+lineId_old+" lineId_young:"+lineId_young)
+                if (overLength % 2 !== 1) {
+                    DrawPath(0, (labelArray[i]['endIndex'] - labelArray[i]['starIndex']) * 17, document.getElementById(labelArray[i]['categoryId']).textContent, labelArray[i]['id'], document.getElementById(labelArray[i]['categoryId']).style.backgroundColor, needTh['x'], needTh['y'], <?php echo $textId;?>, "true");
+                } else {
+                    // console.log("false overLength is "+overLength)
+                    DrawPath(0, (labelArray[i]['endIndex'] - labelArray[i]['starIndex']) * 17, document.getElementById(labelArray[i]['categoryId']).textContent, labelArray[i]['id'], document.getElementById(labelArray[i]['categoryId']).style.backgroundColor, needTh['x'], needTh['y'], <?php echo $textId;?>, "false");
+                }
                 countLabelNum++;
-                // console.log(countLabelNum);
             }
         }
     }
@@ -637,9 +711,13 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
 
         function IsOnly(sendTexttemp, objId) {
             if (document.getElementById(objId)) {
-                console.log("已经存在 " + objId + " 了")
+                console.log("已经存在 " + objId + " 了 __form isONly")
                 sendTexttemp = selectFrom_AllStart + "," + selectFrom_AllEnd + "," + objId + "+" + "," + needThings[1];
+                console.log("修改为：" + sendTexttemp);
                 IsOnly(sendTexttemp, objId + "+");
+                return sendTexttemp;
+            } else {
+                return sendTexttemp;
             }
         }
 
@@ -668,8 +746,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
                     needThings[1] = labelSpan.attr('id');
                     needThings[0] = json['data']['annotation']['labelCategories'][i]['text'];
                     sendTexttemp = selectFrom_AllStart + "," + selectFrom_AllEnd + "," + needThings[1] + "_php_" + countLabelNum + "," + needThings[1];
-                    IsOnly(sendTexttemp, needThings[1] + "_php_" + countLabelNum);
-                    // console.log(sendTexttemp)
+                    sendTexttemp = IsOnly(sendTexttemp, needThings[1] + "_php_" + countLabelNum);
                     $("#dialog_selected_show").val(labelSpan.html());
                 })
         }
@@ -689,11 +766,11 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
 
         function ifOnlyLabel(DrawLabelDate, id) {
             if (document.getElementById(id)) {
-                DrawLabelDate[3] += "+";
+                console.log(id + "is 存在")
+                DrawLabelDate[3] = DrawLabelDate[3] + "+";
                 ifOnlyLabel(DrawLabelDate, DrawLabelDate[3]);
             }
         }
-
         var ifSoloChoose = true;//是否单行选择的标记
         btnDetermine.bind(
             'click', function () {
@@ -703,8 +780,8 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
                         if (left !== -1 && right !== -1) {
                             let DrawLabelDate = [0, (right - left) * 17, needThings[0], needThings[1] + "_php_" + countLabelNum, needThings[2], x_selected, y_selected];
                             ifOnlyLabel(DrawLabelDate, needThings[1] + "_php_" + countLabelNum)
-                            console.log(DrawLabelDate);
-                            DrawPath(DrawLabelDate[0], DrawLabelDate[1], DrawLabelDate[2], DrawLabelDate[3], DrawLabelDate[4], DrawLabelDate[5], DrawLabelDate[6], <?php echo $textId;?>);
+                            // console.log(DrawLabelDate);
+                            DrawPath(DrawLabelDate[0], DrawLabelDate[1], DrawLabelDate[2], DrawLabelDate[3], DrawLabelDate[4], DrawLabelDate[5], DrawLabelDate[6], <?php echo $textId;?>,"true");
                             countLabelNum++;
                             ifSoloChoose = true;
                         } else {
@@ -713,7 +790,7 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
                     }
                     $.ajax({
                         // ifSoloChoose 是否单行选择的标记
-                        url: 'action/addLabel_ToContent.php?ifSoloChoose=' + ifSoloChoose,
+                        url: 'action/addLabel_ToContent.php?ifSoloChoose=',
                         type: 'POST',
                         data: sendTexttemp,
                         success: (result) => {
@@ -740,16 +817,14 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
 
     //触发 选中文本后跳出的Dialog 的事件
     $('#textArray').click(function () {
-
-
         needThings[0] = "";
         needThings[1] = 0;
         needThings[2] = "";
         var range = window.getSelection().getRangeAt(0);
         var rect_Select = range.getBoundingClientRect();
-        const x_selected = rect_Select.left + document.getElementById("svgMaincontainer").scrollLeft - document.getElementById("svgMaincontainer").offsetLeft - 10;
-        const y_selected = rect_Select.top + document.getElementById("svgMaincontainer").scrollTop - document.getElementById("svgMaincontainer").offsetTop - 10;
-        // // console.log("test x:" + x_selected, " y:" + y_selected);
+        const x_selected = rect_Select.left + document.getElementById("svgMaincontainer").scrollLeft - document.getElementById("svgMaincontainer").offsetLeft - 7;
+        const y_selected = rect_Select.top + document.getElementById("svgMaincontainer").scrollTop - document.getElementById("svgMaincontainer").offsetTop - 6;
+        console.log("test x:" + x_selected, " y:" + y_selected);
         // 获取鼠标选中文字,和始终位置
         let selecter = window.getSelection();
         let selectStr = selecter.toString();
@@ -757,7 +832,14 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
         let position = {};
         position.left = selecter.anchorOffset;
         position.right = selecter.focusOffset;
-
+        if (window.getSelection().focusNode.parentElement === window.getSelection().anchorNode.parentElement) {
+            if (position.left > position.right) {
+                // console.log("进行了反向选择");
+                let temp_1 = position.left;
+                position.left = position.right;
+                position.right = temp_1;
+            }
+        }
         //_____________________________________________书写将选中的位置的值 转化为全文中的位置的值_____________________________________________
         let startIndex_All = position.left;
         let endIndex_All;
@@ -771,18 +853,18 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
             }
         }
         endIndex_All = startIndex_All + selectStr.length;
+        // console.log(startIndex_All+"<<<<<<<>>>>>>"+endIndex_All);
         // endIndex_All = startIndex_All + position.right - position.left;
+        if (!selectStr || !selectStr.trim()) return;
+        //获取选取位置  选取的开始和结束的值
+
         if (window.getSelection().focusNode.parentElement === window.getSelection().anchorNode.parentElement) {
-            if (!selectStr || !selectStr.trim()) return;
-            //获取选取位置  选取的开始和结束的值
             showDialog(position.left, position.right, x_selected, y_selected, startIndex_All, endIndex_All);
             document.getElementById("dialog_select_label").showModal();
         } else {
-            if (!selectStr || !selectStr.trim()) return;
             showDialog(-1, -1, x_selected, y_selected, startIndex_All, endIndex_All);
             document.getElementById("dialog_select_label").showModal();
             console.log("进行了跨行选择");
-
         }
     });
 
@@ -791,8 +873,8 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
         //作用页面跳转
         if (page === "") {
             alert("页面开发中，敬请期待!");
-        } else if (page === "file_list"){
-            window.location.href = page + ".php?scrollOldTop_list="+<?php echo $scrollOldTop_list ?> + "&tag=" + nowTag;
+        } else if (page === "file_list") {
+            window.location.href = page + ".php?scrollOldTop_list=" +<?php echo $scrollOldTop_list ?> +"&tag=" + nowTag;
         } else {
             window.location.href = page + ".php";
         }
@@ -809,13 +891,14 @@ if (array_key_exists('labels', $jsonText['data']['annotation'])) {
             }
         }
     }
+
     var scrollTop = 0;
     document.getElementById('svgMaincontainer').onscroll = function () {
         scrollTop = document.getElementById('svgMaincontainer').scrollTop || document.getElementById('svgMaincontainer').scrollTop;
-        document.cookie="scrollTop=" + scrollTop;
+        document.cookie = "scrollTop=" + scrollTop;
     }
     //滚动 清空
-    var scrollOldTop=getCookie("scrollTop");
-    document.getElementById('svgMaincontainer').scrollTop=scrollOldTop;
+    var scrollOldTop = getCookie("scrollTop");
+    document.getElementById('svgMaincontainer').scrollTop = scrollOldTop;
 </script>
 </html>

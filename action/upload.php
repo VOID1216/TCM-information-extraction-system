@@ -1,4 +1,5 @@
 <?php
+require_once '../db_config.php';
 header("content-type:text/html; charset=UTF-8");
 //if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest") {
 if (isset($_POST)){
@@ -19,7 +20,6 @@ if (isset($_POST)){
         $content = str_replace(' ', '', $content);
         $content = str_replace("'", "’", $content);
         echo $content;
-        $link=mysqli_connect("localhost","root","","smart_annotation");
         $queryString="select max(id) as maxId FROM assignment";
         $rs=mysqli_query($link,$queryString);
         $row=mysqli_fetch_assoc($rs);

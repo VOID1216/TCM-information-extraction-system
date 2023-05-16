@@ -1,43 +1,57 @@
+html {
+	background-image: linear-gradient(to top, #ffffff ,transparent) ,url("../image/bk4.jpg");
+	min-width: 1000px;
+	/*height:calc(100% - 10px);*/
+	height: calc(100%);
+}
 .header{
 	/*顶部长条*/
-	background-color: #6495ED;
-	width: max-content;
+	/*border:2px  solid rgb(167, 126, 73);*/
+	width: calc(100% - 42px);
+	margin-right: 25px;
 	height: 80px;
 	position: relative;
 	top: 0;
-	min-width: 100%;
+	background-image: url("../image/12.jpg"),linear-gradient(to top, #ffffff ,transparent);
+	/*background: -webkit-linear-gradient(top,rgb(225, 219, 213,0.3) 0%, rgb(225, 219, 213,0.8) 30%,rgba(225, 219, 213,0.5)77%, rgba(167, 126, 73,0)99%);*/
+	/*min-width: 100%;*/
+	min-width: calc(100% - 280px);
 }
 .leftMenu{
 	/*左侧页面跳转菜单*/
-	width: 200px;
+	width: 150px;
 	border-radius: 10px;
 	height: calc(100vh - 116px);
 	position: relative;
 	float: left;
-	margin-top: 5px;
-	border: #ff0000 1px solid;
-	background-color: #6495ED;
+	margin-top: 9px;
+	background-image:linear-gradient(to top, rgba(255, 255, 255, 0.71) 10% ,transparent) , url("../image/13.jpg");
+	background-color: bisque;
 }
 .leftMenulist{
 	/*左侧跳转菜单栏按钮表*/
-	margin-top: 80px;
-	padding: 0;
+	padding: 28px;
+	margin-top: 76px;
 	list-style-type: none;
 }
 .leftMenulist li{
 	/*左侧跳转菜单栏单个按钮*/
 	list-style: none;
-	background-color: #6495ED;
+	background-color: burlywood;
 	position: relative;
-	height: 50px;
+	height: 30px;
+	margin-top: 10px;
+	border: 1px solid black;
+	border-radius: 7px;
+
 }
 .leftMenulist li:hover{
 	/*鼠标移动至左侧跳转菜单栏单个按钮颜色变换*/
-	background-color: #4169E1;
+	background-color: rgb(241, 138, 12);
 }
 .leftMenulist li:active{
 	/*鼠标点击左侧跳转菜单栏单个按钮颜色变换*/
-	background-color: #00008B;
+	background-color: rgb(214, 123, 3);
 }
 .headerLogo{
 	/*顶部左侧LOGO处*/
@@ -50,100 +64,86 @@
 }
 .headerTitlepic{
 	/*顶部LOGO右边侧网站标题处*/
-	border: 1px solid #ff0000;
+
 	width: 400px ;
 	height: 50px;
 	float: left;
 	position: relative;
-	margin: 10px 10px 10px 0;
+	margin: 15px 10px 10px 0;
 }
 .headerUser{
 	/*顶部右侧用户板块处*/
-	border: 1px solid #ff0000;
 	width: 200px ;
 	height: 50px;
 	float: right;
 	align-items: center;
 	position: relative;
-	margin: 10px;
+	margin: 20px;
 }
 .mainContainer {
 	/*页面调转菜单栏右侧的主要操作区样式*/
-	width: calc(100% - 295px);
-	padding: 20px;
-	height: calc(100vh - 235px);
+	width: calc(100% - 245px);
+	height: calc(100vh - 230px);
 	float: left;
 	position: relative;
-	border: solid 1px #ff0000;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-left: 25px;
-	overflow: scroll;
+	padding: 10px;
+	background-color: #ffffff8a;
+	border: 6px double rgb(201, 191, 181);
+	overflow-y: scroll;
 }
 .operateContainer{
 	/*主要操作区上方板块样式*/
-	width: calc(100% - 295px);
-	height:45px;
-	border: #ff0000 solid 1px;
+	width: calc(100% - 245px);
+	height: 45px;
+	background-color: #ffffff8a;
+	border: 6px double rgb(201, 191, 181);
 	position: relative;
 	float: left;
 	margin-left: 25px;
-	margin-top:16px ;
+	margin-top: 16px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
-#operateContainerallBlock{
-	/*在operateContainer中防止窗口变窄其他div被挤下去的div样式*/
-	min-width: 1300px;
-	height:43px;
-	border: #ff13cc solid 1px;
-}
-#operateContainerleftBlock{
-	/*主要操作区上方板块样式左侧区域 全选删除功能*/
-	width: 200px;
-	height:42px;
-	border: #22ff2d solid 1px;
+/*#operateContainerBlock{*/
+/*	!*在operateContainer中防止窗口变窄其他div被挤下去的div样式*!*/
+/*	width: calc(100%);*/
+/*	min-width: 700px;*/
+/*	height: 40px;*/
+/*	!*border: #00008B solid 1px;*!*/
+/*}*/
+.userListitem{
+	/*主操作区文件列表的文件*/
+	vertical-align: center;
+	align-items: center;
+	align-content: center;
+	background-color: rgba(255, 255, 255, 0.17);
+	border: 6px double rgb(201, 191, 181);
+	min-width: 95%;
+	height: 35px;
 	position: relative;
 	float: left;
+	margin-top: 12px;
+	width: 98%;
+	/*margin-left:5px;*/
+	font-size: 16px;
 }
-#operateContainermiddleBlock{
-	/*主要操作区上方板块样式中侧区域 添加修改功能*/
-	width: 760px;
-	height:42px;
-	border: #3067ff solid 1px;
-	position: relative;
-	float: left;
-	padding-left: 5px;
+.userListitem:hover{
+	/*文件列表中鼠标移动到文件上颜色改变样式*/
+	background-color: #ee9e3b;
+	opacity: 70%;
 }
-#operateContainerrightBlock{
-	/*主要操作区上方板块样式右侧区域 添加修改功能*/
-	width: 304px;
-	height:42px;
-	border: #ff0000 solid 1px;
-	position: relative;
-	float: right;
+.userListitem:active{
+	/*文件列表中鼠标点击文件颜色改变样式*/
+	background-color: #885a22;
+	opacity: 70%;
 }
-.userListForm{
-	/*用户列表中一个用户的外可变化div样式*/
-	opacity:0.8;
-	background: #e1edff;
-	width: calc(100% - 35px);
-	height:29px;
-	border: #00008B solid 1px;
-	margin-top: 15px;
-	margin-left: auto;
-	margin-right: auto;
-}
-#userListFormBlock{
-	/*在userListitem中防止窗口变窄其他div被挤下去的div样式*/
-	min-width: 1280px;
-	height:29px;
-	border: #ff13cc solid 1px;
-}
-.userListFormButtongroup{
-	/*列表中单个用户对象的按钮组样式*/
-	position: relative;
-	float: right;
-	margin-top: 3px;
-	margin-right: 10px;
-	margin-left: 10px;
+.userListitemButtongroup{
+	/*单个文件对象的按钮组样式*/
+	position: absolute;
+	margin-left: 50px;
+	top: -10px;
+	left: 800px;
+	font-size: 30px;
 }

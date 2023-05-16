@@ -1,2 +1,2 @@
 <?php
-$link=mysqli_connect("localhost","root","","smart_annotation");
+$link=mysqli_connect("localhost","root","MDZZ12138wly","smart_annotation");

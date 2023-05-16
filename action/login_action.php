@@ -1,12 +1,12 @@
 <?php
+require_once '../db_config.php';
 header("Content-Type: text/html;charset=utf-8");
 session_start();
 $id = isset($_POST['id']) ? $_POST['id'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 if (!empty($id) && !empty($password)) { //建立连接
-    $conn = mysqli_connect('localhost', 'root', '', 'smart_annotation'); //准备SQL语句
     $sql_select = "SELECT id,username,password,level,userGroup FROM user WHERE id = '$id' AND password = '$password'"; //执行SQL语句
-    $ret = mysqli_query($conn, $sql_select);
+    $ret = mysqli_query($link, $sql_select);
     $row = mysqli_fetch_assoc($ret); //判断用户名或密码是否正确
     var_dump($row);
     $level = $row['level'];//获取权限值

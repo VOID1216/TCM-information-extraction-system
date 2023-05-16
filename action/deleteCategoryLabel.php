@@ -1,5 +1,6 @@
 <?php
 header("content-type:text/html; charset=UTF-8");
+require_once '../db_config.php';
 if (isset($_POST)) {
     $id = $_GET['id'];
 //    $id = 1;
@@ -18,7 +19,6 @@ if (isset($_POST)) {
 //    var_dump($json['data']['annotation']['labelCategories']);
     $textId = $json['data']['id'];
     $jsonText = json_encode($json,JSON_UNESCAPED_UNICODE);
-    $link = mysqli_connect('localhost','root','','smart_annotation');
     $queryString="update assignment set text='$jsonText' where id='$textId'";
     mysqli_query($link,$queryString);
     echo $jsonText;

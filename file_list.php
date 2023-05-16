@@ -1,4 +1,5 @@
 <?php
+require_once './db_config.php';
 header("content-type:text/html; charset=UTF-8");
 session_start();
 $userName = $_SESSION['userName'];
@@ -17,7 +18,6 @@ if (isset($_GET['scrollOldTop_list'])){
     $scrollOldTop_list=$_GET["scrollOldTop_list"];
 //    echo $scrollOldTop_list;
 }
-$link = mysqli_connect("localhost", "root", "", "smart_annotation");
 $queryString = "select id,name,set_time,class,isTag from assignment where articleGroup='$group';";
 $rs = mysqli_query($link, $queryString);
 echo mysqli_error($link);
@@ -65,41 +65,49 @@ $i = 0;
                  style="text-align: center;margin-top: 0px ; position: absolute; top:10px;left:50px;"></div>
         </div><!-- 网页最上方TOP右侧用户位置 -->
     </div>
-    <div id="leftMenu" class="leftMenu" style="width: 150px;"><!-- 网页左侧Left跳转功能栏 -->
+    <div id="leftMenu" class="leftMenu"><!-- 网页左侧Left跳转功能栏 -->
         <ul class="leftMenulist">
             <li onclick="pageJump('file_list')">
-                <spange
-                        style="display: block; text-align: center; line-height: 50px; color: white;">文章列表
-                </spange>
+                <span
+                        style="display: block; text-align: center; line-height: 30px; color: black;">文章列表
+                </span>
             </li><!-- 按钮内容 -->
-            <li id="uerAdmin" onclick="pageJump('user_admin')"><span
+            <li id="uerAdmin" onclick="pageJump('user_admin')">
+                <span
                         style="display: block; text-align: center; line-height: 50px; color: white; ">用户管理</span>
             </li>
-            <li onclick="pageJump('')"><span
-                        style="display: block; text-align: center; line-height: 50px; color: white; ">日志</span></li>
-            <li onclick="pageJump('')"><span
-                        style="display: block; text-align: center; line-height: 50px; color: white; ">数据备份站</span>
+
+            <li>
+                <span
+                    style="display: block; text-align: center; line-height: 30px; color: black;">日志
+                </span>
             </li>
+            <li>
+                <span
+                    style="display: block; text-align: center; line-height: 30px; color: black;">数据备份站
+                </span>
+            </li>
+
         </ul>
     </div>
-    <div style="">
+    <div>
         <div class="operateContainer"><!-- 主要操作区上方的长条操作板块样式 -->
             <div id="operateContainerBlock">
                 <div style="float: right;height: 45px;margin-top: 10px">
                     <form id="formUpload" name="formUpload" action="/action/upload.php" target="iframeUpload"
                           method="post" enctype="multipart/form-data">
-                        <input type="file" id="myFile" name="myFile">
-                        <button type="submit" id="btnUpload" name="btnUpload" style="margin-right: 30px;">添加文件
+                        <input type="file" id="myFile" name="myFile"  style="font-size: 16px">
+                        <button type="submit" id="btnUpload" name="btnUpload" style="margin-right: 30px; font-size: 16px">添加文件
                         </button>
                     </form>
                 </div>
-                <div style="display: inline-block;position: relative; float: right; margin-right: 22px;margin-top: 10px;height: 45px">
-                    <div style="position: relative;float: right;margin-left: 10px;">
-                        <input id="fileRearch" type="button" style="margin-left: 10px;margin-right: 30px;"
+                <div style="display: inline-block;position: relative; float: right;margin-top: 10px;height: 45px ">
+                    <div style="position: relative;float: right;margin-left: 10px">
+                        <input id="fileRearch" type="button" style="margin-left: 10px;margin-right: 30px;font-size: 16px"
                                value="查询"/>
                     </div>
-                    <span style="font-size: 14px;">分类</span>
-                    <select id="selectDisease" name="selectDisease">
+                    <div style="font-size: 16px;position: absolute;float:left;background: #efefef;background-color:#ffffff8a;border: 3px double rgb(201, 191, 181)" >分类</div>
+                    <select id="selectDisease" name="selectDisease" style="height: 25px;margin-left: 40px;margin-top: 1px">
                         <option value="全部">全部</option>
                         <option value="便秘">便秘</option>
                         <option value="胆结石">胆结石</option>
@@ -143,7 +151,7 @@ $i = 0;
         </div>
     </div>
 </div>
-<iframe src="action/upload.php" id="iframeUpload" name="iframeUpload" style="display: none"></iframe>
+<!--<iframe src="action/upload.php" id="iframeUpload" name="iframeUpload" style="display: none"></iframe>-->
 <input type="hidden" id="hiddenInput" name="hiddenInput" value="success">
 </body>
 <script type="text/javascript">
@@ -210,22 +218,18 @@ $i = 0;
                     float: "left",
                     width: "50px",
                     height: "40px",
-                    border: "1px solid #00ff00"
                 }
             });
             objDiv2.appendTo(objDiv1);
             let objImg = $("<img>", {
                 alt: "",
                 src: "image/icon/txt_icon.png",
-                height: "30px",
-                width: "30px",
+                height:"40px",
+                width:"43px",
                 css: {
-                    margin: "auto",
                     position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0
+                    marginLeft: "3px",
+                    marginTop:"2px"
                 }
             });
             objImg.appendTo(objDiv2);
@@ -234,7 +238,7 @@ $i = 0;
                     position: "relative",
                     float: "left",
                     fontsize: "12px",
-                    marginTop: "14px"
+                    marginTop: "10px"
                 }
             });
             objSpan.html(jsonName[i]);
@@ -255,7 +259,6 @@ $i = 0;
             objRadio.css({
                 position: 'relative',
                 float: 'left',
-                marginTop: '4px',
                 marginRight: '5px'
             })
             if (jsonIsTag[i] === '1') {
@@ -275,18 +278,15 @@ $i = 0;
             let objSpanTime = $("<span>");
             objSpanTime.appendTo(objDiv3);
             objSpanTime.html('创建时间:' + jsonTime[i] + '   ');
-            let objInputEdit = $("<input>", {
-                type: "button",
-                value: "编辑"
-            });
+            let objInputEdit = $("<input style='font-size: 16px' type='button' value='编辑'>")
             objInputEdit.appendTo(objDiv3);
             objInputEdit.click(function () {
-                location.href = "file_annotation.php?id=" + jsonId[i] + "&isTag=" + jsonIsTag[i] + "&scrollOldTop_list=" + scrollTop_list + "&tag=" + recordClass.val();
+                location.href = "file_annotation_test.php?id=" + jsonId[i] + "&isTag=" + jsonIsTag[i] + "&scrollOldTop_list=" + scrollTop_list + "&tag=" + recordClass.val();
             })
-            let objInputDel = $("<input>", {
-                type: "button",
-                value: "删除"
-            });
+            let objInputDel = $("<input style='font-size: 16px' type='button' value='删除'>")
+            objInputDel.css({
+                fontsize: "16"
+            })
             objInputDel.bind(
                 'click',
                 () => {
@@ -295,7 +295,7 @@ $i = 0;
                     let objSpan = $('<span>是否确认删除文章？</span>');
                     let btnYes = $('<button>确认</button>');
                     let btnNo = $('<button>取消</button>');
-                    objDialog.appendTo(document.body);
+                    objDialog.appendTo($('body'));
                     objSpan.appendTo(objDialog);
                     btnYes.appendTo(objDialog);
                     btnNo.appendTo(objDialog);
